@@ -1,4 +1,6 @@
 import numpy as np
+from robot import Robot
+from shape import Circle, Rectangle
 
 radius = 2
 num_points = 50  # Number of discrete points
@@ -93,35 +95,40 @@ import matplotlib.pyplot as plt
 # be recomputed to have the same number of points as x and y
 t = np.linspace(0, max_time, len(x))
 
-# Drawing of the path (x vs y)
-plt.figure()
-plt.plot(x, y, marker='o')
-plt.xlabel("X")
-plt.ylabel("Y")
-plt.title("Drawing Path")
-plt.axis("equal")
+# # Drawing of the path (x vs y)
+# plt.figure()
+# plt.plot(x, y, marker='o')
+# plt.xlabel("X")
+# plt.ylabel("Y")
+# plt.title("Drawing Path")
+# plt.axis("equal")
 
-# X and Y position over time
+# # X and Y position over time
+# plt.figure()
+# plt.plot(t, x, marker='o', label="X")
+# plt.plot(t, y, marker='o', label="Y")
+# plt.xlabel("Time (s)")
+# plt.ylabel("Position")
+# plt.title("Position vs Time")
+# plt.legend()
+
+# # Motor 1 (shoulder) and Motor 2 (elbow) angles over time
+# plt.figure()
+# plt.plot(t, a, marker='o', label="Base (Shoulder) Angle")
+# plt.plot(t, b, marker='o', label="Elbow Angle")
+# plt.xlabel("Time (s)")
+# plt.ylabel("Angle (degrees)")
+# plt.title("Joint Angles vs Time")
+# plt.legend()
+
+# Stepper motor step positions over time (shoulder/base and elbow)
 plt.figure()
-plt.plot(t, x, marker='o', label="X")
-plt.plot(t, y, marker='o', label="Y")
+plt.plot(t, ma, marker='o', label="Base (Shoulder) Motor")
+plt.plot(t, mb, marker='o', label="Elbow Motor")
 plt.xlabel("Time (s)")
-plt.ylabel("Position")
-plt.title("Position vs Time")
+plt.ylabel("Step Position (steps)")
+plt.title("Motor Step Positions vs Time")
 plt.legend()
-
-# Motor 1 (shoulder) and Motor 2 (elbow) angles over time
-plt.figure()
-plt.plot(t, a, marker='o')
-plt.xlabel("Time (s)")
-plt.ylabel("Angle (degrees)")
-plt.title("Motor 1 (Shoulder) Angle vs Time")
-
-plt.figure()
-plt.plot(t, b, marker='o')
-plt.xlabel("Time (s)")
-plt.ylabel("Angle (degrees)")
-plt.title("Motor 2 (Elbow) Angle vs Time")
 
 plt.show()
 
