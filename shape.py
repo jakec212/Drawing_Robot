@@ -2,7 +2,7 @@
 import numpy as np
 
 class Shape:
-    def __init__(self, x, y, num_points=50):
+    def __init__(self, x, y, num_points):
         self.x = x
         self.y = y
         self.num_points = num_points
@@ -14,12 +14,13 @@ class Shape:
     def path(self, start_x, start_y):
         """Shape points with the pen's start/end position added on each end."""
         xs, ys = self.points()
-        return (np.concatenate(([start_x], xs, [start_x])),
-                np.concatenate(([start_y], ys, [start_y])))
+        return (xs, ys)
+        #return (np.concatenate(([start_x], xs, [start_x])),
+                #np.concatenate(([start_y], ys, [start_y])))
 
 
 class Circle(Shape):
-    def __init__(self, x, y, radius, num_points=50):
+    def __init__(self, x, y, radius, num_points):
         super().__init__(x, y, num_points)   # let Shape store x, y, num_points
         self.radius = radius
 
@@ -30,7 +31,7 @@ class Circle(Shape):
 
 
 class Rectangle(Shape):
-    def __init__(self, x, y, width, height, num_points=50):
+    def __init__(self, x, y, width, height, num_points):
         super().__init__(x, y, num_points)
         self.width = width
         self.height = height
